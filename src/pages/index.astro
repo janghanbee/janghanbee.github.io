@@ -1,0 +1,189 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { profile } from "../data/profile";
+
+const pageTitle = `${profile.name} — ${profile.role}`;
+const initialMode = profile.modes[0];
+const authorNames = [profile.name, ...profile.authorAliases].filter(Boolean);
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const authorPattern = new RegExp(`(${authorNames.map(escapeRegExp).join("|")})`, "gi");
+const splitAuthors = (authors: string) => authors.split(authorPattern);
+const isProfileAuthor = (name: string) =>
+  authorNames.some((authorName) => authorName.toLocaleLowerCase() === name.toLocaleLowerCase());
+---
+
+<BaseLayout title={pageTitle} description={profile.intro}>
+  <main id="main-content" class="page" data-mode={initialMode.id}>
+    <header class="site-meta">
+      <a href="#top">HANBEE.JANG</a>
+    </header>
+
+    <section class="profile-intro" id="top" aria-labelledby="profile-name">
+      <figure class="portrait-column">
+        <div class="photo-frame">
+          {profile.modes.map((mode, index) => (
+            <img
+              class:list={["profile-photo", { "is-active": index === 0 }]}
+              src={mode.photo}
+              alt={index === 0 ? mode.photoAlt : ""}
+              width="640"
+              height="480"
+              loading={index === 0 ? "eager" : "lazy"}
+              data-mode-photo={index}
+            />
+          ))}
+          <button
+            class="photo-mode-emoji"
+            type="button"
+            data-mode-emoji
+            aria-label={`Change mode. Current: ${initialMode.label}`}
+            title={`${initialMode.label} — click to change`}
+          >{initialMode.icon}</button>
+        </div>
+        <figcaption data-mode-caption aria-live="polite">{initialMode.caption}</figcaption>
+      </figure>
+
+      <div class="profile-copy">
+        <p class="eyebrow">KAIST Industrial Design</p>
+        <h1 id="profile-name">{profile.name}</h1>
+        <p class="role">{profile.role}</p>
+        <p class="intro">{profile.intro}</p>
+
+        <address class="contact-links">
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          {profile.links.map((link) => (
+            <a href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>
+          ))}
+        </address>
+      </div>
+
+    </section>
+
+    <section class="content-section" aria-labelledby="education-title">
+      <header class="section-title">
+        <p>01</p>
+        <h2 id="education-title">Education</h2>
+      </header>
+
+      <div class="education-list">
+        {profile.education.map((item) => (
+          <article class="education-item">
+            <p>{item.period}</p>
+            <div>
+              <h3>{item.degree} in {item.field}</h3>
+              <p class="education-institution">
+                {item.institution}
+                {item.affiliation && ` (${item.affiliation})`}
+                {item.lab && item.advisor && (
+                  <>
+                    {" ("}<a href={item.lab.href} target="_blank" rel="noreferrer">{item.lab.label}</a>
+                    {" · Advisor: "}<a href={item.advisor.href} target="_blank" rel="noreferrer">{item.advisor.label}</a>{")"}
+                  </>
+                )}
+              </p>
+              {item.note && <small>{item.note}</small>}
+              {item.details && (
+                <dl class="education-details">
+                  {item.details.map((detail) => (
+                    <div>
+                      <dt>{detail.label}</dt>
+                      <dd>
+                        {detail.value}
+                        {detail.links?.map((link, index) => (
+                          <>
+                            {index > 0 && " · "}
+                            <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+                          </>
+                        ))}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="content-section publications" aria-labelledby="publications-title">
+      <header class="section-title">
+        <p>02</p>
+        <h2 id="publications-title">Publications</h2>
+      </header>
+
+      <div class="publication-list">
+        {profile.publications.map((publication) => (
+          <article class="publication-item">
+            <div class="publication-meta">
+              <p>{publication.year}</p>
+            </div>
+            <figure class="publication-figure">
+              {publication.figure ? (
+                <img
+                  src={publication.figure}
+                  alt={publication.figureAlt ?? ""}
+                  width="320"
+                  height="240"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="figure-placeholder" aria-hidden="true">
+                  <span>FIGURE</span>
+                </div>
+              )}
+            </figure>
+            <div class="publication-copy">
+              <h3>{publication.title}</h3>
+              <p class="authors">
+                {splitAuthors(publication.authors).map((part) =>
+                  isProfileAuthor(part) ? <mark>{part}</mark> : part
+                )}
+              </p>
+              <p class="venue">{publication.venue}{publication.note && ` · ${publication.note}`}</p>
+              {publication.links && (
+                <div class="publication-links">
+                  {publication.links.map((link) => (
+                    <a href={link.href} target={link.href === "#" ? undefined : "_blank"} rel="noreferrer">
+                      {link.label} ↗
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <footer>
+      <p>© {new Date().getFullYear()} {profile.name}</p>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </main>
+
+  <script define:vars={{ modes: profile.modes }}>
+    const page = document.querySelector(".page");
+    const modeEmoji = document.querySelector("[data-mode-emoji]");
+    const modeCaption = document.querySelector("[data-mode-caption]");
+    const modePhotos = [...document.querySelectorAll("[data-mode-photo]")];
+    let modeIndex = 0;
+
+    modeEmoji.addEventListener("click", () => {
+        modeIndex = (modeIndex + 1) % modes.length;
+        const mode = modes[modeIndex];
+        page.dataset.mode = mode.id;
+        modeEmoji.textContent = mode.icon;
+        modeCaption.textContent = mode.caption;
+        modeEmoji.setAttribute("aria-label", `Change mode. Current: ${mode.label}`);
+        modeEmoji.setAttribute("title", `${mode.label} — click to change`);
+        modePhotos.forEach((photo, index) => {
+          const isActive = index === modeIndex;
+          photo.classList.toggle("is-active", isActive);
+          photo.setAttribute("alt", isActive ? modes[index].photoAlt : "");
+        });
+        modeEmoji.classList.remove("mode-pulse");
+        requestAnimationFrame(() => modeEmoji.classList.add("mode-pulse"));
+    });
+  </script>
+</BaseLayout>

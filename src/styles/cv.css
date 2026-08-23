@@ -1,0 +1,290 @@
+body {
+  background: #e9ecf1;
+}
+
+.cv-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(calc(100% - 40px), 860px);
+  min-height: 58px;
+  margin-inline: auto;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 680;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cv-download {
+  color: var(--blue);
+}
+
+.cv-sheet {
+  width: min(calc(100% - 40px), 860px);
+  margin: 0 auto 64px;
+  padding: 58px 64px 30px;
+  background: #fff;
+  box-shadow: 0 18px 60px rgb(31 38 49 / 9%);
+}
+
+.cv-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #cfd4dc;
+}
+
+.cv-kicker {
+  margin-bottom: 7px;
+  color: var(--pink);
+  font-size: 8px;
+  font-weight: 720;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cv-header h1 {
+  margin-bottom: 5px;
+  font-size: 32px;
+}
+
+.cv-role {
+  margin: 0;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 680;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cv-header address {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 1px;
+  font-size: 9px;
+  font-style: normal;
+  text-align: right;
+}
+
+.cv-header address a:first-child {
+  color: var(--blue);
+}
+
+.cv-sheet section {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr);
+  gap: 24px;
+  padding-block: 24px;
+  border-bottom: 1px solid #dfe2e7;
+}
+
+.cv-sheet section > h2 {
+  margin: 1px 0 0;
+  color: var(--pink);
+  font-size: 8px;
+  font-weight: 730;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cv-summary p {
+  max-width: 570px;
+  margin-bottom: 7px;
+  color: #3f444c;
+  font-size: 10.5px;
+}
+
+.cv-summary .cv-interests {
+  margin: 0;
+  color: var(--blue);
+  font-size: 8.5px;
+  font-weight: 650;
+}
+
+.cv-entries {
+  display: grid;
+  gap: 18px;
+}
+
+.cv-entry {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.cv-period {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 8.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cv-entry h3,
+.cv-activities h3 {
+  margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: 680;
+}
+
+.cv-institution,
+.cv-note {
+  margin-bottom: 2px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.cv-detail {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 7px;
+  margin: 6px 0 0;
+  color: #626871;
+  font-size: 8.5px;
+  line-height: 1.4;
+}
+
+.cv-detail b {
+  color: #828891;
+  font-size: 7.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cv-publications {
+  display: grid;
+  gap: 15px;
+  margin: 0;
+  padding-left: 22px;
+}
+
+.cv-publications li {
+  padding-left: 3px;
+  color: var(--pink);
+  font-size: 8.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cv-publications p {
+  color: var(--muted);
+}
+
+.cv-publication-title {
+  margin-bottom: 3px;
+  color: var(--ink) !important;
+  font-size: 10.5px;
+  font-weight: 660;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.cv-authors,
+.cv-venue {
+  margin-bottom: 2px;
+  font-size: 8.5px;
+}
+
+.cv-authors strong {
+  color: var(--ink);
+  font-weight: 720;
+}
+
+.cv-venue {
+  color: #858b94 !important;
+  font-style: italic;
+}
+
+.cv-activities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.cv-activities p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 8.5px;
+}
+
+.cv-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 16px;
+  color: #9ba0a8;
+  font-size: 7.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cv-footer p {
+  margin: 0;
+}
+
+@media (max-width: 620px) {
+  .cv-actions,
+  .cv-sheet {
+    width: min(calc(100% - 24px), 860px);
+  }
+
+  .cv-sheet {
+    padding: 36px 24px 24px;
+  }
+
+  .cv-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .cv-header address {
+    text-align: left;
+  }
+
+  .cv-sheet section {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cv-entry {
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .cv-activities {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm 17mm;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .cv-actions,
+  .skip-link {
+    display: none;
+  }
+
+  .cv-sheet {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .cv-sheet section {
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
