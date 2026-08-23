@@ -28,7 +28,7 @@ body {
     radial-gradient(circle at 90% 100%, rgb(255 111 168 / 6%), transparent 24rem),
     var(--paper);
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
 }
@@ -72,7 +72,7 @@ button:focus-visible {
 }
 
 .page {
-  width: min(calc(100% - 40px), 640px);
+  width: min(calc(100% - 32px), 720px);
   margin-inline: auto;
 }
 
@@ -98,7 +98,7 @@ button:focus-visible {
   min-height: 58px;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 680;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -175,7 +175,7 @@ button:focus-visible {
 .portrait-column figcaption {
   margin: auto 0 0;
   color: var(--mode-color);
-  font-size: 8px;
+  font-size: 9.5px;
   font-weight: 650;
   letter-spacing: 0.02em;
   line-height: 1.5;
@@ -190,7 +190,7 @@ button:focus-visible {
 .eyebrow {
   margin: 0 0 5px;
   color: var(--blue);
-  font-size: 8px;
+  font-size: 9.5px;
   font-weight: 720;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -204,27 +204,18 @@ p {
 }
 
 h1 {
-  margin-bottom: 2px;
-  font-size: clamp(26px, 5vw, 34px);
+  margin-bottom: 10px;
+  font-size: clamp(29px, 5vw, 38px);
   font-weight: 670;
   letter-spacing: -0.055em;
   line-height: 1;
 }
 
-.role {
-  margin-bottom: 9px;
-  color: var(--muted);
-  font-size: 9px;
-  font-weight: 680;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .intro {
-  max-width: 420px;
+  max-width: none;
   margin-bottom: 12px;
   color: #444951;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .contact-links {
@@ -236,7 +227,7 @@ h1 {
 
 .contact-links a {
   color: var(--blue);
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: 660;
 }
 
@@ -260,14 +251,14 @@ h1 {
 .section-title p {
   margin: 0;
   color: var(--pink);
-  font-size: 8px;
+  font-size: 9.5px;
   font-weight: 720;
   font-variant-numeric: tabular-nums;
 }
 
 .section-title h2 {
   margin: 0;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 660;
   letter-spacing: -0.035em;
 }
@@ -288,13 +279,13 @@ h1 {
 .education-item > p {
   margin: 1px 0 0;
   color: var(--muted);
-  font-size: 8.5px;
+  font-size: 10px;
   font-variant-numeric: tabular-nums;
 }
 
 .education-item h3 {
   margin-bottom: 2px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 650;
   letter-spacing: -0.015em;
 }
@@ -302,7 +293,7 @@ h1 {
 .education-item div > p {
   margin-bottom: 2px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11.5px;
 }
 
 .education-institution a,
@@ -318,7 +309,7 @@ h1 {
 
 .education-item small {
   color: #91969d;
-  font-size: 8.5px;
+  font-size: 10px;
 }
 
 .education-details {
@@ -335,7 +326,7 @@ h1 {
 
 .education-details dt {
   color: var(--pink);
-  font-size: 7.5px;
+  font-size: 8.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -344,7 +335,7 @@ h1 {
 .education-details dd {
   margin: 0;
   color: #696f78;
-  font-size: 8.5px;
+  font-size: 10px;
   line-height: 1.4;
 }
 
@@ -363,7 +354,7 @@ h1 {
 .publication-meta p {
   margin: 0;
   color: var(--muted);
-  font-size: 8.5px;
+  font-size: 10px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -395,14 +386,14 @@ h1 {
     linear-gradient(135deg, transparent 49.4%, var(--line) 50%, transparent 50.6%),
     linear-gradient(45deg, transparent 49.4%, var(--line) 50%, transparent 50.6%),
     rgb(255 255 255 / 24%);
-  font-size: 7px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 
 .publication-copy h3 {
   margin-bottom: 5px;
-  font-size: 12.5px;
+  font-size: 14.5px;
   font-weight: 650;
   letter-spacing: -0.02em;
   line-height: 1.35;
@@ -411,7 +402,7 @@ h1 {
 .publication-copy > p {
   margin-bottom: 3px;
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: 11px;
 }
 
 .publication-copy .authors mark {
@@ -423,7 +414,7 @@ h1 {
 
 .publication-copy .venue {
   color: #858a92;
-  font-size: 9px;
+  font-size: 10.5px;
 }
 
 .publication-links {
@@ -434,7 +425,7 @@ h1 {
 
 .publication-links a {
   color: var(--blue);
-  font-size: 8px;
+  font-size: 9.5px;
   font-weight: 690;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -451,7 +442,7 @@ footer {
   min-height: 64px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 8px;
+  font-size: 9.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -468,7 +459,7 @@ footer p {
 
 @media (max-width: 480px) {
   .page {
-    width: min(calc(100% - 28px), 640px);
+    width: min(calc(100% - 20px), 720px);
   }
 
   .site-meta {
@@ -494,13 +485,13 @@ footer p {
   }
 
   h1 {
-    font-size: clamp(24px, 8vw, 29px);
+    font-size: clamp(26px, 8.5vw, 31px);
   }
 
   .intro {
     display: -webkit-box;
     overflow: hidden;
-    font-size: 10.5px;
+    font-size: 12px;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
@@ -510,7 +501,7 @@ footer p {
   }
 
   .contact-links a {
-    font-size: 7.5px;
+    font-size: 9px;
   }
 
   .publication-item {
