@@ -322,6 +322,7 @@ h1 {
   display: grid;
   grid-template-columns: 54px minmax(0, 1fr);
   gap: 8px;
+  align-items: baseline;
 }
 
 .education-details dt {
@@ -329,6 +330,7 @@ h1 {
   font-size: 8.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
@@ -489,11 +491,15 @@ footer p {
   }
 
   .intro {
-    display: -webkit-box;
-    overflow: hidden;
     font-size: 12px;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+  }
+
+  .portrait-column {
+    align-self: start;
+  }
+
+  .portrait-column figcaption {
+    margin-top: 10px;
   }
 
   .contact-links {
