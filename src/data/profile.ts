@@ -100,22 +100,6 @@ export const profile = {
   ] satisfies Education[],
   publications: [
     {
-      year: "2026",
-      figure: "/publication-figures/2026_uist_poster_afl.png",
-      title: "Immersive Setup of Autonomous Forklifts in Factories",
-      authors: "Joon Hyub Lee, Sang-Hyun Lee, Hanbee Jang, Siripon Sutthiwanna, Hyelim Hwang, and Seok-Hyung Bae",
-      venue: "UIST 2026 Poster",
-      note: "To appear",
-    },
-    {
-      year: "2026",
-      figure: "/publication-figures/2026_uist_pwfw.png",
-      title: "Projective Walls, Floors, and Windows: Aligned Plane Interactions for Interior Architectural Design in VR",
-      authors: "Hanbee Jang, Seung-Jun Lee, and Seok-Hyung Bae",
-      venue: "UIST 2026 Paper",
-      note: "To appear",
-    },
-    {
       year: "2025",
       figure: "/publication-figures/2025_uist_garden_of_papers_1.jpg",
       title: "Garden of papers: finding, reading, and organizing research papers in a visual, integrated, and flexible workspace.",

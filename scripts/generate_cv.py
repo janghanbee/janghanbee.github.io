@@ -291,16 +291,6 @@ def education_block():
 def publications_block():
     publications = [
         {
-            "title": "Immersive Setup of Autonomous Forklifts in Factories",
-            "authors": "Joon Hyub Lee, Sang-Hyun Lee, Hanbee Jang, Siripon Sutthiwanna, Hyelim Hwang, and Seok-Hyung Bae",
-            "venue": "UIST 2026 (Poster) | To appear",
-        },
-        {
-            "title": "Projective Walls, Floors, and Windows: Aligned Plane Interactions for Interior Architectural Design in VR",
-            "authors": "Hanbee Jang, Seung-Jun Lee, and Seok-Hyung Bae",
-            "venue": "UIST 2026 | To appear",
-        },
-        {
             "title": "Garden of papers: finding, reading, and organizing research papers in a visual, integrated, and flexible workspace.",
             "authors": "Donghyeok Ma, Hanbee Jang, Joon Hyub Lee, and Seok-Hyung Bae",
             "venue": "UIST 2025",
