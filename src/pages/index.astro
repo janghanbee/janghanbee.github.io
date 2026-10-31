@@ -44,7 +44,6 @@ const homepageSchema = {
     },
   ],
 };
-const initialMode = profile.modes[0];
 const authorNames = [profile.name, ...profile.authorAliases].filter(Boolean);
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const authorPattern = new RegExp(`(${authorNames.map(escapeRegExp).join("|")})`, "gi");
@@ -59,35 +58,63 @@ const isProfileAuthor = (name: string) =>
   canonicalPath="/"
   jsonLd={homepageSchema}
 >
-  <main id="main-content" class="page" data-mode={initialMode.id}>
+  <main id="main-content" class="page" data-mode="profile">
     <section class="profile-intro" id="top" aria-labelledby="profile-name">
-      <figure class="portrait-column">
-        <div class="photo-frame">
-          {profile.modes.map((mode, index) => (
-            <img
-              class:list={["profile-photo", { "is-active": index === 0 }]}
-              src={mode.photo}
-              alt={index === 0 ? mode.photoAlt : ""}
-              width="640"
-              height="480"
-              loading={index === 0 ? "eager" : "lazy"}
-              data-mode-photo={index}
-            />
-          ))}
-          <button
-            class="photo-mode-emoji"
-            type="button"
-            data-mode-emoji
-            aria-label={`Change mode. Current: ${initialMode.label}`}
-            title={`${initialMode.label} — click to change`}
-          >{initialMode.icon}</button>
-        </div>
-        <figcaption data-mode-caption aria-live="polite">{initialMode.caption}</figcaption>
-      </figure>
-
       <div class="profile-copy">
         <p class="eyebrow">{profile.role}</p>
         <h1 id="profile-name">{profile.name}</h1>
+
+        <figure class="portrait-experience">
+          <div class="profile-stage" id="profile-stage" data-profile-stage>
+            <img
+              class="stage-photo identity-portrait is-active"
+              src={profile.portrait}
+              alt={profile.portraitAlt}
+              width="1280"
+              height="960"
+              loading="eager"
+              data-identity-photo
+            />
+            {profile.modes.map((mode, index) => (
+              <img
+                class="stage-photo persona-photo"
+                src={mode.photo}
+                alt=""
+                width="1280"
+                height="960"
+                loading="lazy"
+                data-mode-photo={index}
+              />
+            ))}
+            <button
+              class="profile-reset"
+              type="button"
+              aria-label="Return to profile portrait"
+              title="Back to profile"
+              data-profile-reset
+              hidden
+            >×</button>
+          </div>
+
+          <div class="persona-deck" role="group" aria-label="Choose a persona">
+            {profile.modes.map((mode, index) => (
+              <button
+                class="persona-card"
+                type="button"
+                aria-label={`View ${mode.label}`}
+                aria-controls="profile-stage"
+                aria-pressed="false"
+                data-persona-card={index}
+              >
+                <img src={mode.photo} alt="" width="240" height="320" loading="lazy" />
+                <span>{mode.cardLabel}</span>
+              </button>
+            ))}
+          </div>
+
+          <figcaption data-mode-caption aria-live="polite">pick a card&nbsp;✦</figcaption>
+        </figure>
+
         <p class="intro">{profile.intro}</p>
 
         <address class="contact-links">
@@ -207,28 +234,70 @@ const isProfileAuthor = (name: string) =>
     </footer>
   </main>
 
-  <script define:vars={{ modes: profile.modes }}>
+  <script define:vars={{ modes: profile.modes, portraitAlt: profile.portraitAlt }}>
     const page = document.querySelector(".page");
-    const modeEmoji = document.querySelector("[data-mode-emoji]");
+    const profileStage = document.querySelector("[data-profile-stage]");
+    const identityPhoto = document.querySelector("[data-identity-photo]");
+    const profileReset = document.querySelector("[data-profile-reset]");
     const modeCaption = document.querySelector("[data-mode-caption]");
     const modePhotos = [...document.querySelectorAll("[data-mode-photo]")];
-    let modeIndex = 0;
+    const personaCards = [...document.querySelectorAll("[data-persona-card]")];
+    let selectedMode = -1;
 
-    modeEmoji.addEventListener("click", () => {
-        modeIndex = (modeIndex + 1) % modes.length;
-        const mode = modes[modeIndex];
-        page.dataset.mode = mode.id;
-        modeEmoji.textContent = mode.icon;
-        modeCaption.textContent = mode.caption;
-        modeEmoji.setAttribute("aria-label", `Change mode. Current: ${mode.label}`);
-        modeEmoji.setAttribute("title", `${mode.label} — click to change`);
-        modePhotos.forEach((photo, index) => {
-          const isActive = index === modeIndex;
-          photo.classList.toggle("is-active", isActive);
-          photo.setAttribute("alt", isActive ? modes[index].photoAlt : "");
-        });
-        modeEmoji.classList.remove("mode-pulse");
-        requestAnimationFrame(() => modeEmoji.classList.add("mode-pulse"));
+    const showProfile = () => {
+      selectedMode = -1;
+      page.dataset.mode = "profile";
+      profileStage.classList.remove("has-selection");
+      identityPhoto.classList.add("is-active");
+      identityPhoto.setAttribute("alt", portraitAlt);
+      profileReset.hidden = true;
+      modeCaption.textContent = "pick a card\u00A0✦";
+
+      modePhotos.forEach((photo) => {
+        photo.classList.remove("is-active");
+        photo.setAttribute("alt", "");
+      });
+
+      personaCards.forEach((card) => {
+        card.classList.remove("is-active");
+        card.setAttribute("aria-pressed", "false");
+      });
+    };
+
+    const showMode = (index) => {
+      selectedMode = index;
+      const mode = modes[index];
+      page.dataset.mode = mode.id;
+      profileStage.classList.add("has-selection");
+      identityPhoto.classList.remove("is-active");
+      identityPhoto.setAttribute("alt", "");
+      profileReset.hidden = false;
+      modeCaption.textContent = mode.caption;
+
+      modePhotos.forEach((photo, photoIndex) => {
+        const isActive = photoIndex === index;
+        photo.classList.toggle("is-active", isActive);
+        photo.setAttribute("alt", isActive ? modes[photoIndex].photoAlt : "");
+      });
+
+      personaCards.forEach((card, cardIndex) => {
+        const isActive = cardIndex === index;
+        card.classList.toggle("is-active", isActive);
+        card.setAttribute("aria-pressed", String(isActive));
+      });
+    };
+
+    personaCards.forEach((card, index) => {
+      card.addEventListener("click", () => {
+        if (selectedMode === index) {
+          showProfile();
+          return;
+        }
+
+        showMode(index);
+      });
     });
+
+    profileReset.addEventListener("click", showProfile);
   </script>
 </BaseLayout>

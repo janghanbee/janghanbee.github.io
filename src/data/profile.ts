@@ -34,6 +34,7 @@ export type Publication = {
 export type Mode = {
   id: string;
   icon: string;
+  cardLabel: string;
   photo: string;
   photoAlt: string;
   caption: string;
@@ -43,6 +44,8 @@ export type Mode = {
 
 export const profile = {
   name: "Hanbee Jang",
+  portrait: "/profile-photo.webp",
+  portraitAlt: "Portrait of Hanbee Jang",
   authorAliases: ["Jang, Hanbee"],
   nameKo: "",
   role: "HCI Researcher",
@@ -137,48 +140,53 @@ export const profile = {
   ] satisfies Link[],
   modes: [
     {
+      id: "daily",
+      icon: "✦",
+      cardLabel: "DAILY",
+      photo: "/website_photo_lab.webp",
+      photoAlt: "Hanbee Jang smiling at her desk in SketchLab",
+      caption: "an ordinary day at SketchLab\u00A0✦",
+      label: "Daily life",
+      status: "Working from my favorite corner of the lab.",
+    },
+    {
       id: "research",
       icon: "🥽",
+      cardLabel: "VR",
       photo: "/website_photo_1.webp",
       photoAlt: "Hanbee Jang in research mode",
-      caption: "deep in my VR world\u00A0✦",
-      label: "Research mode",
+      caption: "testing my VR prototype\u00A0✦",
+      label: "VR research",
       status: "Exploring embodied interaction in virtual worlds.",
     },
     {
       id: "travel",
       icon: "✈️",
+      cardLabel: "TRAVEL",
       photo: "/website_photo_3.webp",
       photoAlt: "Hanbee Jang in travel mode",
-      caption: "hello, Matterhorn!\u00A0✦",
-      label: "Travel mode",
+      caption: "meeting the Matterhorn\u00A0✦",
+      label: "Travel",
       status: "Collecting new places, systems, and perspectives.",
     },
     {
       id: "piano",
       icon: "🎹",
+      cardLabel: "KEYS",
       photo: "/website_photo_2.webp",
       photoAlt: "Hanbee Jang in piano mode",
-      caption: "keys, lights, action!\u00A0✦",
-      label: "Piano mode",
+      caption: "playing keys with the band\u00A0✦",
+      label: "Keys",
       status: "Practicing one measure at a time.",
-    },
-    {
-      id: "baseball",
-      icon: "⚾",
-      photo: "/website_photo_5.webp",
-      photoAlt: "Hanbee Jang enjoying baseball",
-      caption: "we lost, still smiling\u00A0✦",
-      label: "Baseball mode",
-      status: "Waiting for the first pitch.",
     },
     {
       id: "running",
       icon: "🏃",
+      cardLabel: "RUN",
       photo: "/website_photo_4.webp",
       photoAlt: "Hanbee Jang after finishing a half marathon",
       caption: "half marathon finisher\u00A0✦",
-      label: "Run mode",
+      label: "Running",
       status: "Half marathon finisher.",
     },
   ] satisfies Mode[],
