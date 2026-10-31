@@ -24,6 +24,7 @@ export type Publication = {
   title: string;
   authors: string;
   venue: string;
+  path?: string;
   figure?: string;
   figureAlt?: string;
   note?: string;
@@ -102,6 +103,7 @@ export const profile = {
     {
       year: "2026",
       figure: "/publication-figures/2026_uist_poster_afl.png",
+      figureAlt: "Representative figure for Immersive Setup of Autonomous Forklifts in Factories",
       title: "Immersive Setup of Autonomous Forklifts in Factories",
       authors: "Joon Hyub Lee, Sang-Hyun Lee, Hanbee Jang, Siripon Sutthiwanna, Hyelim Hwang, and Seok-Hyung Bae",
       venue: "UIST 2026 Poster",
@@ -110,6 +112,8 @@ export const profile = {
     {
       year: "2026",
       figure: "/publication-figures/2026_uist_pwfw.png",
+      figureAlt: "Representative figure showing aligned plane interactions for interior architectural design in VR",
+      path: "/publications/projective-walls-floors-windows/",
       title: "Projective Walls, Floors, and Windows: Aligned Plane Interactions for Interior Architectural Design in VR",
       authors: "Hanbee Jang, Seung-Jun Lee, and Seok-Hyung Bae",
       venue: "UIST 2026 Paper",
@@ -118,6 +122,7 @@ export const profile = {
     {
       year: "2025",
       figure: "/publication-figures/2025_uist_garden_of_papers_1.jpg",
+      figureAlt: "Representative figure for Garden of Papers",
       title: "Garden of papers: finding, reading, and organizing research papers in a visual, integrated, and flexible workspace.",
       authors: "Donghyeok Ma, Hanbee Jang, Joon Hyub Lee, and Seok-Hyung Bae",
       venue: "UIST 2025 Paper",

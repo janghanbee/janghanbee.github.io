@@ -2,7 +2,48 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { profile } from "../data/profile";
 
-const pageTitle = `${profile.name} — ${profile.role}`;
+const pageTitle = `${profile.name} | HCI Researcher at KAIST`;
+const pageDescription =
+  "Hanbee Jang is an HCI researcher and designer at KAIST studying virtual reality, spatial interaction, and immersive design tools.";
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://janghanbee.github.io/#person",
+      name: profile.name,
+      url: "https://janghanbee.github.io/",
+      jobTitle: profile.role,
+      email: `mailto:${profile.email}`,
+      affiliation: {
+        "@type": "CollegeOrUniversity",
+        name: "Korea Advanced Institute of Science and Technology (KAIST)",
+        alternateName: "KAIST",
+        url: "https://www.kaist.ac.kr/en/",
+      },
+      sameAs: [
+        ...profile.links.map((link) => link.href),
+        "https://orcid.org/0009-0008-2887-2835",
+        "https://i2dea.kaist.ac.kr/people/hanbeejang",
+      ],
+      knowsAbout: [
+        "Human-computer interaction",
+        "Virtual reality",
+        "Spatial interaction",
+        "Immersive design tools",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://janghanbee.github.io/#website",
+      url: "https://janghanbee.github.io/",
+      name: "Hanbee Jang",
+      description: pageDescription,
+      author: { "@id": "https://janghanbee.github.io/#person" },
+      inLanguage: "en",
+    },
+  ],
+};
 const initialMode = profile.modes[0];
 const authorNames = [profile.name, ...profile.authorAliases].filter(Boolean);
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -12,7 +53,12 @@ const isProfileAuthor = (name: string) =>
   authorNames.some((authorName) => authorName.toLocaleLowerCase() === name.toLocaleLowerCase());
 ---
 
-<BaseLayout title={pageTitle} description={profile.intro}>
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/"
+  jsonLd={homepageSchema}
+>
   <main id="main-content" class="page" data-mode={initialMode.id}>
     <header class="site-meta">
       <a href="#top">HANBEE.JANG</a>
@@ -133,7 +179,11 @@ const isProfileAuthor = (name: string) =>
               )}
             </figure>
             <div class="publication-copy">
-              <h3>{publication.title}</h3>
+              <h3>
+                {publication.path ? (
+                  <a href={publication.path}>{publication.title}</a>
+                ) : publication.title}
+              </h3>
               <p class="authors">
                 {splitAuthors(publication.authors).map((part) =>
                   isProfileAuthor(part) ? <mark>{part}</mark> : part

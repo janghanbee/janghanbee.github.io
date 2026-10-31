@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { profile } from "../../data/profile";
+
+const paper = profile.publications.find(
+  (publication) => publication.path === "/publications/projective-walls-floors-windows/"
+);
+
+if (!paper) {
+  throw new Error("Projective Walls, Floors, and Windows publication data is missing.");
+}
+
+const pageTitle = `${paper.title} | Hanbee Jang`;
+const pageDescription = `${paper.title}, a ${paper.venue} publication by ${paper.authors}.`;
+const canonicalUrl = `https://janghanbee.github.io${paper.path}`;
+const paperSchema = {
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": `${canonicalUrl}#article`,
+  url: canonicalUrl,
+  name: paper.title,
+  headline: paper.title,
+  description: pageDescription,
+  image: `https://janghanbee.github.io${paper.figure}`,
+  datePublished: paper.year,
+  author: [
+    {
+      "@type": "Person",
+      "@id": "https://janghanbee.github.io/#person",
+      name: "Hanbee Jang",
+      affiliation: {
+        "@type": "CollegeOrUniversity",
+        name: "Korea Advanced Institute of Science and Technology (KAIST)",
+      },
+    },
+    { "@type": "Person", name: "Seung-Jun Lee" },
+    { "@type": "Person", name: "Seok-Hyung Bae" },
+  ],
+  isPartOf: {
+    "@type": "CreativeWork",
+    name: "UIST 2026",
+  },
+  about: [
+    { "@type": "Thing", name: "Virtual reality" },
+    { "@type": "Thing", name: "Spatial interaction" },
+    { "@type": "Thing", name: "Interior architectural design" },
+  ],
+  inLanguage: "en",
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath={paper.path}
+  image={paper.figure}
+  type="article"
+  jsonLd={paperSchema}
+>
+  <main id="main-content" class="page">
+    <header class="site-meta">
+      <a href="/">HANBEE.JANG</a>
+    </header>
+
+    <article class="publication-detail">
+      <a class="back-link" href="/#publications-title">← All publications</a>
+      <p class="eyebrow">{paper.venue}{paper.note && ` · ${paper.note}`}</p>
+      <h1>{paper.title}</h1>
+      <p class="publication-detail-authors">{paper.authors}</p>
+      <p class="publication-detail-venue">KAIST · 2026</p>
+
+      <figure class="publication-detail-figure">
+        <img
+          src={paper.figure}
+          alt={paper.figureAlt}
+          width="960"
+          height="720"
+          loading="eager"
+        />
+      </figure>
+
+      <section class="publication-detail-summary" aria-labelledby="paper-about-title">
+        <h2 id="paper-about-title">About this work</h2>
+        <div>
+          <p>
+            This work investigates aligned plane interactions across walls, floors, and windows
+            for interior architectural design in virtual reality.
+          </p>
+          <p class="publication-detail-keywords">
+            Virtual reality · Spatial interaction · Interior architectural design
+          </p>
+        </div>
+      </section>
+    </article>
+
+    <footer>
+      <p>© {new Date().getFullYear()} {profile.name}</p>
+      <a href="/">Home ↑</a>
+    </footer>
+  </main>
+</BaseLayout>
