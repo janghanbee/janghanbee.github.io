@@ -113,7 +113,6 @@ export const profile = {
       year: "2026",
       figure: "/publication-figures/2026_uist_pwfw.png",
       figureAlt: "Representative figure showing aligned plane interactions for interior architectural design in VR",
-      path: "/publications/projective-walls-floors-windows/",
       title: "Projective Walls, Floors, and Windows: Aligned Plane Interactions for Interior Architectural Design in VR",
       authors: "Hanbee Jang, Seung-Jun Lee, and Seok-Hyung Bae",
       venue: "UIST 2026 Paper",

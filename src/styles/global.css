@@ -6,7 +6,7 @@
   --blue: #315cff;
   --pink: #ff6fa8;
   --mode-color: var(--blue);
-  --sans: "Instrument Sans Variable", "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sans: "Google Sans Flex Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -28,7 +28,7 @@ body {
     radial-gradient(circle at 90% 100%, rgb(255 111 168 / 6%), transparent 24rem),
     var(--paper);
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
 }
@@ -98,7 +98,7 @@ button:focus-visible {
   min-height: 58px;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 680;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -175,7 +175,7 @@ button:focus-visible {
 .portrait-column figcaption {
   margin: auto 0 0;
   color: var(--mode-color);
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 650;
   letter-spacing: 0.02em;
   line-height: 1.5;
@@ -190,7 +190,7 @@ button:focus-visible {
 .eyebrow {
   margin: 0 0 5px;
   color: var(--blue);
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 720;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -205,7 +205,7 @@ p {
 
 h1 {
   margin-bottom: 10px;
-  font-size: clamp(29px, 5vw, 38px);
+  font-size: clamp(32px, 5vw, 40px);
   font-weight: 670;
   letter-spacing: -0.055em;
   line-height: 1;
@@ -215,7 +215,8 @@ h1 {
   max-width: none;
   margin-bottom: 12px;
   color: #444951;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .contact-links {
@@ -227,7 +228,7 @@ h1 {
 
 .contact-links a {
   color: var(--blue);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 660;
 }
 
@@ -251,14 +252,14 @@ h1 {
 .section-title p {
   margin: 0;
   color: var(--pink);
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 720;
   font-variant-numeric: tabular-nums;
 }
 
 .section-title h2 {
   margin: 0;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 660;
   letter-spacing: -0.035em;
 }
@@ -279,13 +280,13 @@ h1 {
 .education-item > p {
   margin: 1px 0 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
 
 .education-item h3 {
   margin-bottom: 2px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 650;
   letter-spacing: -0.015em;
 }
@@ -293,7 +294,7 @@ h1 {
 .education-item div > p {
   margin-bottom: 2px;
   color: var(--muted);
-  font-size: 11.5px;
+  font-size: 13px;
 }
 
 .education-institution a,
@@ -309,7 +310,7 @@ h1 {
 
 .education-item small {
   color: #91969d;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .education-details {
@@ -327,7 +328,7 @@ h1 {
 
 .education-details dt {
   color: var(--pink);
-  font-size: 8.5px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.4;
@@ -337,8 +338,8 @@ h1 {
 .education-details dd {
   margin: 0;
   color: #696f78;
-  font-size: 10px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .publication-item {
@@ -356,7 +357,7 @@ h1 {
 .publication-meta p {
   margin: 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -388,14 +389,14 @@ h1 {
     linear-gradient(135deg, transparent 49.4%, var(--line) 50%, transparent 50.6%),
     linear-gradient(45deg, transparent 49.4%, var(--line) 50%, transparent 50.6%),
     rgb(255 255 255 / 24%);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 
 .publication-copy h3 {
   margin-bottom: 5px;
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 650;
   letter-spacing: -0.02em;
   line-height: 1.35;
@@ -413,19 +414,20 @@ h1 {
 .publication-copy > p {
   margin-bottom: 3px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .publication-copy .authors mark {
-  padding: 0 1px;
+  padding: 0;
   color: var(--ink);
-  background: linear-gradient(transparent 52%, rgb(255 111 168 / 32%) 52%);
+  background: transparent;
   font-weight: 700;
 }
 
 .publication-copy .venue {
   color: #858a92;
-  font-size: 10.5px;
+  font-size: 12px;
 }
 
 .publication-links {
@@ -436,7 +438,7 @@ h1 {
 
 .publication-links a {
   color: var(--blue);
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 690;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -453,88 +455,13 @@ footer {
   min-height: 64px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 footer p {
   margin: 0;
-}
-
-.publication-detail {
-  padding-block: 42px 60px;
-}
-
-.publication-detail .back-link {
-  display: inline-block;
-  margin-bottom: 34px;
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 680;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.publication-detail h1 {
-  max-width: 690px;
-  margin-bottom: 14px;
-  font-size: clamp(32px, 6vw, 46px);
-  line-height: 1.05;
-}
-
-.publication-detail-authors {
-  max-width: 620px;
-  margin-bottom: 5px;
-  color: #444951;
-  font-size: 13px;
-}
-
-.publication-detail-venue {
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.publication-detail-figure {
-  margin: 34px 0;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-}
-
-.publication-detail-figure img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.publication-detail-summary {
-  display: grid;
-  grid-template-columns: 152px minmax(0, 1fr);
-  gap: 20px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-}
-
-.publication-detail-summary h2 {
-  margin: 0;
-  color: var(--pink);
-  font-size: 9.5px;
-  font-weight: 720;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.publication-detail-summary p {
-  margin-bottom: 10px;
-  color: #444951;
-  font-size: 14px;
-}
-
-.publication-detail-keywords {
-  color: var(--muted) !important;
-  font-size: 10.5px !important;
 }
 
 @keyframes mode-pop {
@@ -571,11 +498,12 @@ footer p {
   }
 
   h1 {
-    font-size: clamp(26px, 8.5vw, 31px);
+    font-size: clamp(30px, 8.5vw, 34px);
   }
 
   .intro {
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .portrait-column {
@@ -591,7 +519,7 @@ footer p {
   }
 
   .contact-links a {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .publication-item {
@@ -609,26 +537,6 @@ footer p {
     gap: 8px;
   }
 
-  .publication-detail {
-    padding-block: 32px 44px;
-  }
-
-  .publication-detail .back-link {
-    margin-bottom: 26px;
-  }
-
-  .publication-detail h1 {
-    font-size: clamp(28px, 9vw, 34px);
-  }
-
-  .publication-detail-figure {
-    margin-block: 26px;
-  }
-
-  .publication-detail-summary {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
