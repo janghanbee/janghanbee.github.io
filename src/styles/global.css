@@ -75,23 +75,6 @@ button:focus-visible {
   margin-inline: auto;
 }
 
-.site-meta {
-  display: flex;
-  align-items: center;
-  min-height: 58px;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 680;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.site-meta a {
-  color: var(--ink);
-  text-decoration: none;
-}
-
 .profile-intro {
   display: grid;
   grid-template-columns: 148px minmax(0, 1fr);
@@ -461,10 +444,6 @@ footer p {
 @media (max-width: 480px) {
   .page {
     width: min(calc(100% - 20px), 720px);
-  }
-
-  .site-meta {
-    min-height: 50px;
   }
 
   .profile-intro {

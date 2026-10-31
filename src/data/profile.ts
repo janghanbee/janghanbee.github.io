@@ -115,7 +115,7 @@ export const profile = {
       figureAlt: "Representative figure showing aligned plane interactions for interior architectural design in VR",
       title: "Projective Walls, Floors, and Windows: Aligned Plane Interactions for Interior Architectural Design in VR",
       authors: "Hanbee Jang, Seung-Jun Lee, and Seok-Hyung Bae",
-      venue: "UIST 2026 Paper",
+      venue: "UIST 2026",
       note: "To appear",
     },
     {
@@ -124,7 +124,7 @@ export const profile = {
       figureAlt: "Representative figure for Garden of Papers",
       title: "Garden of papers: finding, reading, and organizing research papers in a visual, integrated, and flexible workspace.",
       authors: "Donghyeok Ma, Hanbee Jang, Joon Hyub Lee, and Seok-Hyung Bae",
-      venue: "UIST 2025 Paper",
+      venue: "UIST 2025",
       links: [
         { label: "DOI", href: "https://dl.acm.org/doi/full/10.1145/3746059.3747637" },
       ],
@@ -176,10 +176,10 @@ export const profile = {
       id: "running",
       icon: "🏃",
       photo: "/website_photo_4.webp",
-      photoAlt: "Hanbee Jang in running mode",
-      caption: "10K, done and happy\u00A0✦",
+      photoAlt: "Hanbee Jang after finishing a half marathon",
+      caption: "half marathon finisher\u00A0✦",
       label: "Run mode",
-      status: "Out for a steady run.",
+      status: "Half marathon finisher.",
     },
   ] satisfies Mode[],
 };
