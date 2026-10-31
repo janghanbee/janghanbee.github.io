@@ -3,9 +3,8 @@
   --ink: #17191d;
   --muted: #6c727b;
   --line: #d4d8de;
-  --blue: #315cff;
-  --pink: #ff6fa8;
-  --mode-color: var(--blue);
+  --accent: #6557e8;
+  --mode-color: var(--accent);
   --sans: "Google Sans Flex Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -24,8 +23,8 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at 15% 0%, rgb(49 92 255 / 5%), transparent 22rem),
-    radial-gradient(circle at 90% 100%, rgb(255 111 168 / 6%), transparent 24rem),
+    radial-gradient(circle at 15% 0%, rgb(101 87 232 / 6%), transparent 22rem),
+    radial-gradient(circle at 90% 100%, rgb(101 87 232 / 4%), transparent 24rem),
     var(--paper);
   font-family: var(--sans);
   font-size: 15px;
@@ -46,7 +45,7 @@ a {
 }
 
 a:hover {
-  color: var(--blue);
+  color: var(--accent);
   text-decoration-color: currentColor;
 }
 
@@ -74,22 +73,6 @@ button:focus-visible {
 .page {
   width: min(calc(100% - 32px), 720px);
   margin-inline: auto;
-}
-
-.page[data-mode="travel"] {
-  --mode-color: #f15f9b;
-}
-
-.page[data-mode="piano"] {
-  --mode-color: #8368d8;
-}
-
-.page[data-mode="baseball"] {
-  --mode-color: #d85063;
-}
-
-.page[data-mode="running"] {
-  --mode-color: #249c70;
 }
 
 .site-meta {
@@ -189,7 +172,7 @@ button:focus-visible {
 
 .eyebrow {
   margin: 0 0 5px;
-  color: var(--blue);
+  color: var(--accent);
   font-size: 11px;
   font-weight: 720;
   letter-spacing: 0.11em;
@@ -227,7 +210,7 @@ h1 {
 }
 
 .contact-links a {
-  color: var(--blue);
+  color: var(--accent);
   font-size: 12px;
   font-weight: 660;
 }
@@ -251,10 +234,12 @@ h1 {
 
 .section-title p {
   margin: 0;
-  color: var(--pink);
-  font-size: 11px;
-  font-weight: 720;
+  color: var(--accent);
+  font-size: 21px;
+  font-weight: 660;
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
 }
 
 .section-title h2 {
@@ -305,7 +290,7 @@ h1 {
 
 .education-institution a:hover,
 .education-details a:hover {
-  color: var(--blue);
+  color: var(--accent);
 }
 
 .education-item small {
@@ -321,25 +306,28 @@ h1 {
 
 .education-details div {
   display: grid;
-  grid-template-columns: 54px minmax(0, 1fr);
-  gap: 8px;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 10px;
   align-items: baseline;
 }
 
 .education-details dt {
-  color: var(--pink);
+  color: var(--accent);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.4;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .education-details dd {
+  min-width: 0;
   margin: 0;
   color: #696f78;
   font-size: 12px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .publication-item {
@@ -408,7 +396,7 @@ h1 {
 }
 
 .publication-copy h3 a:hover {
-  color: var(--blue);
+  color: var(--accent);
 }
 
 .publication-copy > p {
@@ -437,7 +425,7 @@ h1 {
 }
 
 .publication-links a {
-  color: var(--blue);
+  color: var(--accent);
   font-size: 11px;
   font-weight: 690;
   letter-spacing: 0.05em;
@@ -533,7 +521,7 @@ footer p {
   }
 
   .section-title {
-    grid-template-columns: 24px minmax(0, 1fr);
+    grid-template-columns: 30px minmax(0, 1fr);
     gap: 8px;
   }
 
